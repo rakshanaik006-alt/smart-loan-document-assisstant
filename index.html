@@ -1,0 +1,561 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LoanLens AI</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+  <!-- Floating Background -->
+  <div class="particles"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-shield-halved"></i>
+      LoanLens AI
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+
+      <button class="login-btn">
+        Login
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+      <span class="badge">
+        AI Loan Verification Platform
+      </span>
+
+      <h1>
+        AI-Powered Smart Loan Document Verification
+      </h1>
+
+      <p>
+        Upload, verify, and validate loan documents with intelligent AI-powered automation.
+        Reduce rejection rates and accelerate loan approvals instantly.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="primary-btn">
+          Get Started
+        </button>
+
+        <button class="secondary-btn">
+          Upload Documents
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-card glass">
+      <div class="scan-animation"></div>
+
+      <h3>AI Verification Status</h3>
+
+      <div class="status-item">
+        <span>OCR Verification</span>
+        <span class="success">Completed</span>
+      </div>
+
+      <div class="status-item">
+        <span>Blur Detection</span>
+        <span class="warning">Checking</span>
+      </div>
+
+      <div class="status-item">
+        <span>Document Match</span>
+        <span class="success">98%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+
+    <h2 class="section-title">Core Features</h2>
+
+    <div class="feature-grid">
+
+      <div class="feature-card glass">
+        <i class="fa-solid fa-file-circle-check"></i>
+        <h3>Document Requirement Guide</h3>
+        <p>AI guides users with the exact documents required for every loan type.</p>
+      </div>
+
+      <div class="feature-card glass">
+        <i class="fa-solid fa-eye"></i>
+        <h3>AI Quality Checker</h3>
+        <p>Detects blurry, dark, cropped or low-quality documents instantly.</p>
+      </div>
+
+      <div class="feature-card glass">
+        <i class="fa-solid fa-microchip"></i>
+        <h3>OCR Verification</h3>
+        <p>Extracts and validates important details automatically.</p>
+      </div>
+
+      <div class="feature-card glass">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h3>Missing Document Detection</h3>
+        <p>AI identifies incomplete applications before submission.</p>
+      </div>
+
+      <div class="feature-card glass">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Faster Loan Approval</h3>
+        <p>Reduce processing time and improve loan approval success rate.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Auth Section -->
+  <section class="auth-section">
+
+    <div class="auth-container glass">
+
+      <div class="auth-left">
+        <h2>Secure Banking Access</h2>
+
+        <p>
+          Access your AI-powered loan dashboard securely with premium authentication.
+        </p>
+
+        <div class="auth-illustration">
+          <i class="fa-solid fa-fingerprint"></i>
+        </div>
+      </div>
+
+      <div class="auth-right">
+
+        <div class="tabs">
+          <button class="tab active">Login</button>
+          <button class="tab">Signup</button>
+        </div>
+
+        <form class="auth-form">
+
+          <input type="text" placeholder="Full Name"/>
+          <input type="email" placeholder="Email Address"/>
+          <input type="text" placeholder="Phone Number"/>
+          <input type="text" placeholder="Account Number"/>
+          <input type="password" placeholder="Password"/>
+
+          <div class="form-options">
+            <label>
+              <input type="checkbox"/>
+              Remember me
+            </label>
+
+            <a href="#">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="primary-btn full-btn">
+            Continue
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Dashboard -->
+  <section class="dashboard-section" id="dashboard">
+
+    <div class="dashboard">
+
+      <!-- Sidebar -->
+      <aside class="sidebar glass">
+
+        <div class="sidebar-logo">
+          <i class="fa-solid fa-shield-halved"></i>
+          LoanLens
+        </div>
+
+        <ul>
+          <li class="active">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+          </li>
+
+          <li>
+            <i class="fa-solid fa-upload"></i>
+            Uploads
+          </li>
+
+          <li>
+            <i class="fa-solid fa-file-circle-check"></i>
+            Verification
+          </li>
+
+          <li>
+            <i class="fa-solid fa-chart-pie"></i>
+            Analytics
+          </li>
+
+          <li>
+            <i class="fa-solid fa-gear"></i>
+            Settings
+          </li>
+        </ul>
+
+      </aside>
+
+      <!-- Main -->
+      <main class="dashboard-main">
+
+        <!-- Topbar -->
+        <div class="dashboard-top">
+
+          <div>
+            <h2>Welcome Back, Raghavendra 👋</h2>
+            <p>Your loan verification insights are ready.</p>
+          </div>
+
+          <div class="top-actions">
+
+            <button class="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+            </button>
+
+            <div class="profile-card glass">
+              <img src="https://i.pravatar.cc/100" alt="">
+              <span>Raghavendra</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Widgets -->
+        <div class="widgets">
+
+          <div class="widget glass">
+            <h3>Documents Uploaded</h3>
+            <span>12</span>
+          </div>
+
+          <div class="widget glass">
+            <h3>Missing Documents</h3>
+            <span>02</span>
+          </div>
+
+          <div class="widget glass">
+            <h3>Verification Status</h3>
+            <span>92%</span>
+          </div>
+
+          <div class="widget glass">
+            <h3>Loan Type</h3>
+            <span>Home Loan</span>
+          </div>
+
+        </div>
+
+        <!-- Readiness -->
+        <div class="dashboard-grid">
+
+          <div class="progress-card glass">
+
+            <h3>Loan Readiness Score</h3>
+
+            <div class="circular-progress">
+              <div class="value-container">85%</div>
+            </div>
+
+          </div>
+
+          <div class="tracker glass">
+
+            <h3>Loan Progress Tracker</h3>
+
+            <div class="timeline">
+
+              <div class="timeline-item completed">
+                Documents Uploaded
+              </div>
+
+              <div class="timeline-item completed">
+                AI Verification
+              </div>
+
+              <div class="timeline-item active">
+                Final Review
+              </div>
+
+              <div class="timeline-item">
+                Approval Pending
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </section>
+
+  <!-- Loan Types -->
+  <section class="loan-section">
+
+    <h2 class="section-title">Select Loan Type</h2>
+
+    <div class="loan-grid">
+
+      <div class="loan-card glass">
+        <i class="fa-solid fa-house"></i>
+        <h3>Home Loan</h3>
+      </div>
+
+      <div class="loan-card glass">
+        <i class="fa-solid fa-wallet"></i>
+        <h3>Personal Loan</h3>
+      </div>
+
+      <div class="loan-card glass">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h3>Education Loan</h3>
+      </div>
+
+      <div class="loan-card glass">
+        <i class="fa-solid fa-car"></i>
+        <h3>Vehicle Loan</h3>
+      </div>
+
+      <div class="loan-card glass">
+        <i class="fa-solid fa-briefcase"></i>
+        <h3>Business Loan</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Upload Section -->
+  <section class="upload-section">
+
+    <h2 class="section-title">Upload Documents</h2>
+
+    <div class="upload-container glass">
+
+      <div class="drop-area" id="dropArea">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <h3>Drag & Drop Files</h3>
+        <p>or click to browse</p>
+      </div>
+
+      <div class="required-docs">
+
+        <h3>Required Documents</h3>
+
+        <ul>
+          <li>Aadhaar Card</li>
+          <li>PAN Card</li>
+          <li>Salary Slip</li>
+          <li>Bank Statement</li>
+          <li>Property Document</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- AI Checker -->
+  <section class="checker-section">
+
+    <h2 class="section-title">AI Quality Checker</h2>
+
+    <div class="checker-grid">
+
+      <div class="checker-card glass">
+        <h3>Blur Detection</h3>
+
+        <div class="progress-bar">
+          <div class="progress blur"></div>
+        </div>
+
+        <span class="success">✅ Clear</span>
+      </div>
+
+      <div class="checker-card glass">
+        <h3>Brightness Check</h3>
+
+        <div class="progress-bar">
+          <div class="progress bright"></div>
+        </div>
+
+        <span class="warning">⚠ Medium</span>
+      </div>
+
+      <div class="checker-card glass">
+        <h3>Resolution Check</h3>
+
+        <div class="progress-bar">
+          <div class="progress resolution"></div>
+        </div>
+
+        <span class="success">✅ HD Quality</span>
+      </div>
+
+      <div class="checker-card glass">
+        <h3>File Validation</h3>
+
+        <div class="progress-bar">
+          <div class="progress file"></div>
+        </div>
+
+        <span class="danger">❌ Re-upload Needed</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Verification -->
+  <section class="verification-section">
+
+    <h2 class="section-title">Verification Results</h2>
+
+    <div class="verify-grid">
+
+      <div class="verify-card glass">
+        <h3>Name</h3>
+        <p>Raghavendra R</p>
+        <span class="success">✅ Match</span>
+      </div>
+
+      <div class="verify-card glass">
+        <h3>DOB</h3>
+        <p>08/04/2005</p>
+        <span class="success">✅ Match</span>
+      </div>
+
+      <div class="verify-card glass">
+        <h3>PAN Number</h3>
+        <p>ABCDE1234F</p>
+        <span class="success">✅ Match</span>
+      </div>
+
+      <div class="verify-card glass">
+        <h3>Aadhaar Number</h3>
+        <p>XXXX XXXX 4521</p>
+        <span class="warning">⚠ Address Mismatch</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Final Submission -->
+  <section class="final-section">
+
+    <div class="final-card glass">
+
+      <h2>Application Ready</h2>
+
+      <div class="completion-bar">
+        <div class="completion-fill"></div>
+      </div>
+
+      <p>Application Completion: 92%</p>
+
+      <h3>Loan Readiness Score: 85%</h3>
+
+      <div class="final-buttons">
+
+        <button class="primary-btn" id="submitBtn">
+          Submit Application
+        </button>
+
+        <button class="secondary-btn">
+          Download Summary
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>LoanLens AI</h3>
+        <p>AI-powered smart loan verification platform.</p>
+      </div>
+
+      <div>
+        <h4>About</h4>
+        <a href="#">Company</a>
+        <a href="#">Team</a>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <a href="#">support@loanlens.ai</a>
+
+        <div class="socials">
+          <i class="fa-brands fa-linkedin"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-x-twitter"></i>
+        </div>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    Your loan documents are verified and ready for submission.
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
