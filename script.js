@@ -1,103 +1,98 @@
-// script.js
+// ── Document Extraction Feature ──────────────────────────────────────────────
 
-// Theme Toggle
-const themeToggle = document.getElementById("themeToggle");
-
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-
-  if(document.body.classList.contains("light-mode")){
-    themeToggle.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-  } else {
-    themeToggle.innerHTML = `<i class="fa-solid fa-moon"></i>`;
-  }
+// Make drop area clickable to select file
+dropArea.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".pdf,.png,.jpg,.jpeg,.docx";
+  input.onchange = (e) => handleFile(e.target.files[0]);
+  input.click();
 });
 
-// Circular Progress Animation
-let circularProgress = document.querySelector(".circular-progress");
-let valueContainer = document.querySelector(".value-container");
-
-let progressValue = 0;
-let progressEndValue = 85;
-
-let speed = 20;
-
-let progress = setInterval(() => {
-  progressValue++;
-
-  valueContainer.textContent = `${progressValue}%`;
-
-  circularProgress.style.background = `
-    conic-gradient(
-      #00c6ff ${progressValue * 3.6}deg,
-      #1f2a44 0deg
-    )
-  `;
-
-  if(progressValue == progressEndValue){
-    clearInterval(progress);
-  }
-
-}, speed);
-
-// Drag Upload Effect
-const dropArea = document.getElementById("dropArea");
-
-dropArea.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  dropArea.style.borderColor = "#7f5cff";
-});
-
-dropArea.addEventListener("dragleave", () => {
-  dropArea.style.borderColor = "#00c6ff";
-});
-
+// Handle dropped file
 dropArea.addEventListener("drop", (e) => {
   e.preventDefault();
+  const file = e.dataTransfer.files[0];
+  if (file) handleFile(file);
+});
 
+async function handleFile(file) {
+  // Show uploading state
   dropArea.innerHTML = `
-    <i class="fa-solid fa-circle-check"></i>
-    <h3>Upload Successful</h3>
+    <i class="fa-solid fa-spinner fa-spin"></i>
+    <h3>Extracting Details...</h3>
+    <p>${file.name}</p>
   `;
-});
 
-// Toast Notification
-const submitBtn = document.getElementById("submitBtn");
-const toast = document.getElementById("toast");
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
 
-submitBtn.addEventListener("click", () => {
+    const response = await fetch("http://127.0.0.1:5000/extract", {
+      method: "POST",
+      body: formData,
+    });
 
-  toast.classList.add("show");
+    const data = await response.json();
 
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 4000);
-
-});
-
-// Smooth Reveal Animation
-const cards = document.querySelectorAll(
-  ".feature-card, .loan-card, .checker-card, .verify-card, .widget"
-);
-
-window.addEventListener("scroll", () => {
-
-  cards.forEach(card => {
-
-    const cardTop = card.getBoundingClientRect().top;
-
-    if(cardTop < window.innerHeight - 100){
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
+    if (data.success) {
+      showExtractedFields(data.extracted_fields);
+      dropArea.innerHTML = `
+        <i class="fa-solid fa-circle-check" style="color:#00c6ff"></i>
+        <h3>Extraction Complete!</h3>
+        <p>${file.name}</p>
+      `;
+    } else {
+      dropArea.innerHTML = `
+        <i class="fa-solid fa-circle-xmark" style="color:red"></i>
+        <h3>Error: ${data.error}</h3>
+        <p>Try again</p>
+      `;
     }
+  } catch (err) {
+    dropArea.innerHTML = `
+      <i class="fa-solid fa-circle-xmark" style="color:red"></i>
+      <h3>Server not running!</h3>
+      <p>Start extract.py first</p>
+    `;
+  }
+}
 
-  });
+function showExtractedFields(fields) {
+  // Remove old results if any
+  const existing = document.getElementById("extractionResults");
+  if (existing) existing.remove();
 
-});
+  // Filter out null/empty fields
+  const validFields = Object.entries(fields).filter(
+    ([_, v]) => v && v !== "null" && v !== ""
+  );
 
-// Initial hidden state
-cards.forEach(card => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(40px)";
-  card.style.transition = "0.6s ease";
-});
+  // Build results HTML
+  const resultsHTML = validFields.map(([key, value]) => `
+    <div class="verify-card glass">
+      <h3>${formatKey(key)}</h3>
+      <p>${value}</p>
+      <span class="success">✅ Extracted</span>
+    </div>
+  `).join("");
+
+  // Inject into verification section
+  const verifyGrid = document.querySelector(".verify-grid");
+  
+  const resultsSection = document.createElement("div");
+  resultsSection.id = "extractionResults";
+  resultsSection.innerHTML = `
+    <h2 class="section-title" style="margin-top:2rem">📄 Extracted Loan Details</h2>
+    <div class="verify-grid">${resultsHTML}</div>
+  `;
+
+  verifyGrid.parentElement.appendChild(resultsSection);
+
+  // Scroll to results
+  resultsSection.scrollIntoView({ behavior: "smooth" });
+}
+
+function formatKey(key) {
+  return key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
